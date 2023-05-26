@@ -15,6 +15,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void mySignaltoBd();
+
+private slots:
+    void on_pushButton_clicked();
+
+
 private:
     Ui::MainWindow *ui;
 };

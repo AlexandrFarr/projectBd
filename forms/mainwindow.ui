@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -28,7 +28,7 @@
       <widget class="QTableView" name="tableView"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="buttonQuery">
        <property name="text">
         <string>PushButton</string>
        </property>

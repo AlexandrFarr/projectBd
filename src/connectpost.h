@@ -5,13 +5,23 @@
 #include <QMessageBox>
 #include <QtSql>
 #include <QSqlDatabase>
+#include <QSqlTableModel>
+#include <QDebug>
+
 
 class connectPost : public QObject
 {
     Q_OBJECT
 public:
     explicit connectPost(QObject *parent = nullptr);
+    void showTable(QString nameTable);
 
+public slots:
+    void enterQueryButton();
+
+
+private:
+    QSqlDatabase db;
 signals:
 
 };
