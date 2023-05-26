@@ -15,6 +15,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_PREFIX_PATH $ENV{QTDIR})
 find_package(Qt6Core REQUIRED)
 find_package(Qt6Widgets REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Sql)
 
 #=================== INCLUSION OF Project Files ====================#
 set(FORMS_DIR "${CMAKE_SOURCE_DIR}/forms")
@@ -28,8 +29,14 @@ include_directories(${SOURCE_DIR})
 file(GLOB_RECURSE SOURCES
     "${FORMS_DIR}/*.ui"
     "${FORMS_DIR}/*.qrc"
+    "${SOURCE_DIR}/*.h"
     "${INCLUDE_DIR}/*.h"
     "${SOURCE_DIR}/*.cpp"
+)
+
+file(GLOB_RECURSE FORMS
+    "${FORMS_DIR}/forms.ui"
+    "${FORMS_DIR}/forms.qrc"
 )
 
 #=================== SETUP EXECTUABLE ====================#
@@ -55,3 +62,4 @@ target_include_directories(projectBd PRIVATE ${SOURCE_DIR})
 
 #===================== LINKING LIBRARIES =======================#
 target_link_libraries(projectBd Qt6::Widgets)
+target_link_libraries(projectBd Qt6::Sql)
