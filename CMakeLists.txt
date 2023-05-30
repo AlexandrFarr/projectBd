@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.5)
 
 if (WIN32)
-    project(projectBd LANGUAGES CXX)
+    project(projectBd VERSION 1.0.0 LANGUAGES CXX)
 elseif(UNIX)
-    project(projectBd)
+    project(projectBd VERSION 1.0.0)
 endif()
 
-set(CMAKE_CONFIGURATION_TYPES "Release;RelWithDebInfo" CACHE STRING "" FORCE)
 
 #======================= INCLUSION OF Qt =======================#
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -16,6 +16,7 @@ set(CMAKE_PREFIX_PATH $ENV{QTDIR})
 find_package(Qt6Core REQUIRED)
 find_package(Qt6Widgets REQUIRED)
 find_package(Qt6 REQUIRED COMPONENTS Sql)
+
 
 #=================== INCLUSION OF Project Files ====================#
 set(FORMS_DIR "${CMAKE_SOURCE_DIR}/forms")
@@ -60,3 +61,7 @@ target_include_directories(projectBd PRIVATE ${SOURCE_DIR})
 #===================== LINKING LIBRARIES =======================#
 target_link_libraries(projectBd Qt6::Widgets)
 target_link_libraries(projectBd Qt6::Sql)
+
+
+
+
