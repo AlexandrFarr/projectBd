@@ -53,6 +53,35 @@ elseif(UNIX)
     add_executable(projectBd ${SOURCES})
 endif()
 
+
+
+#=========================SUBDIRECTORIES AND TESTS============
+enable_testing()
+
+add_subdirectory(
+    "${CMAKE_CURRENT_SOURCE_DIR}/googletest"
+    "googletest"
+)
+
+
+enable_testing()
+
+add_executable(
+ test_1
+ test_1.cc
+)
+target_link_libraries(
+ test_1
+ GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(hello_test)
+
+
+
+#==========================================================
+
 # Add the target includes for MY_PROJECT
 target_include_directories(projectBd PRIVATE ${FORMS_DIR})
 target_include_directories(projectBd PRIVATE ${INCLUDE_DIR})
