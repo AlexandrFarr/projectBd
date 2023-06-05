@@ -59,25 +59,8 @@ endif()
 enable_testing()
 
 add_subdirectory(
-    "${CMAKE_CURRENT_SOURCE_DIR}/googletest"
-    "googletest"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests"
 )
-
-
-enable_testing()
-
-add_executable(
- test_1
- test_1.cc
-)
-target_link_libraries(
- test_1
- GTest::gtest_main
-)
-
-include(GoogleTest)
-gtest_discover_tests(hello_test)
-
 
 
 #==========================================================
