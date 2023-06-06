@@ -1,29 +1,31 @@
+cmake_minimum_required(VERSION 3.14.0)  # (1)
+
+set(TEST_EXECUTABLE your-test)  # (2)
+set(TEST_NAME test-name)
+set(UNIT_UNDER_TEST_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG        release-1.10.0
 )
-# configure build of googletest
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+FetchContent_MakeAvailable(googletest)  # (3)
+
+
 
 add_executable(
-    unit_tests
-    example_add.cpp
-    example_subtract.cpp
-    )
+    ${TEST_EXECUTABLE} example_add.cpp
+)
+target_link_libraries(${TEST_EXECUTABLE}
+  #gmock  # (5)
+ # gmock_main
+   gtest_main
+)
+target_include_directories(${TEST_EXECUTABLE} PUBLIC
+  ${UNIT_UNDER_TEST_INCLUDE_DIR}  # (6)
+)
 
-target_link_libraries(unit_tests
-  PRIVATE
-    example
-    gtest_main
-  )
+add_test(${TEST_NAME} ${TEST_EXECUTABLE})
 
-# automatic discovery of unit tests
-include(GoogleTest)
-gtest_discover_tests(unit_tests
-  PROPERTIES
-    LABELS "unit"
-  DISCOVERY_TIMEOUT  # how long to wait (in seconds) before crashing
-    240
-  )
+
