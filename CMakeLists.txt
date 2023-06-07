@@ -65,6 +65,12 @@ add_subdirectory(
 
 #==========================================================
 
+
+
+
+
+
+
 # Add the target includes for MY_PROJECT
 target_include_directories(projectBd PRIVATE ${FORMS_DIR})
 target_include_directories(projectBd PRIVATE ${INCLUDE_DIR})

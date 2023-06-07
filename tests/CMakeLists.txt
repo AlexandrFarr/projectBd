@@ -23,7 +23,8 @@ target_link_libraries(${TEST_EXECUTABLE}
    gtest_main
 )
 target_include_directories(${TEST_EXECUTABLE} PUBLIC
-  ${UNIT_UNDER_TEST_INCLUDE_DIR}  # (6)
+  ${UNIT_UNDER_TEST_INCLUDE_DIR}
+  "${CMAKE_CURRENT_SOURCE_DIR}/src"
 )
 
 add_test(${TEST_NAME} ${TEST_EXECUTABLE})
