@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 3.14.0)  # (1)
 set(TEST_EXECUTABLE your-test)  # (2)
 set(TEST_NAME test-name)
 set(UNIT_UNDER_TEST_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
-set(UNIT_UNDER_TEST_SRC_DIR ../src)
+set(MAIN_SRC_DIR ../src)
+set (MAIN_SOURCE ${MAIN_SRC_DIR}/example.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -14,24 +15,19 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)  # (3)
 
 
-
-set(MAIN_SRC_DIR ../src)
-set (MAIN_SOURCE
- ${MAIN_SRC_DIR}/example.cpp
-)
-
+# если сделаем статическую библиотеку из src то убираем ${MAIN_SOURCE}
 add_executable(
     your-test example_add.cpp  ${MAIN_SOURCE}
 )
+
 target_link_libraries(your-test
   #gmock  # (5)
  # gmock_main
    gtest_main
 
 )
-### there
+### there ( нужно подключать статическую библиотеку из src)
 target_include_directories(your-test PUBLIC
-  ${UNIT_UNDER_TEST_INCLUDE_DIR}
     ${MAIN_SRC_DIR}
 )
 

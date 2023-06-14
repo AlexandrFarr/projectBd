@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
 //#include "../src/example.h"
 //#include "../src/example.h"
-#include <../src/example.h>
-
+#include "example.h"
 
 TEST(example, add_numbers) {
     double res;
