@@ -12,6 +12,7 @@
 class connectPost : public QObject
 {
     Q_OBJECT
+
 public:
     explicit connectPost(QObject *parent = nullptr);
     void showTable(QString nameTable);
@@ -19,6 +20,8 @@ public:
 public slots:
     void enterQueryButton();
 
+signals:
+    void sendTableVie(QSqlQueryModel *model);
 
 private:
     QSqlDatabase db;

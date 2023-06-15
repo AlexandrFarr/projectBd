@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSqlQueryModel>
+#include <QTableView>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,8 +20,8 @@ public:
 signals:
     void mySignaltoBd();
 
-private slots:
-    void on_pushButton_clicked();
+public slots:
+    void showTableVie( QSqlQueryModel *model);
 
 
 private:

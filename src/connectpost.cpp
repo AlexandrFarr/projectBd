@@ -26,16 +26,23 @@ connectPost::connectPost(QObject *parent)
 
 void connectPost::showTable(QString nameTable)
 {
-    QSqlQuery query = QSqlQuery(db);
-    if( !query.exec("SELECT * FROM users1")){
-         QMessageBox::information(0,"Неуспешно ","неудачный запрос");
-         return;
-    }
+    QSqlQuery *query = new QSqlQuery(db);
 
-    while( query.next()){
-        qDebug() << query.record();
-    }
+    QSqlQueryModel *model = new QSqlQueryModel();
+
+    query->prepare("SELECT * FROM users1");
+    query->exec();
+
+    model->setQuery(*query);
+
 }
+
+
+void connectPost::sendTableVie(QSqlQueryModel *model)
+{
+    connect(this, &connectPost::sendTableVie, this,);
+}
+
 
 void connectPost::enterQueryButton()
 {
