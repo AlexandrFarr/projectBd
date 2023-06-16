@@ -25,7 +25,7 @@ signals:
 
 private:
     QSqlDatabase db;
-signals:
+
 
 };
 

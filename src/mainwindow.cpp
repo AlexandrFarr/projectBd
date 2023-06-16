@@ -8,10 +8,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     connectPost *bd = new connectPost();
+    QSqlQueryModel *model = new QSqlQueryModel();
+
 
     connect(ui->buttonQuery, &QPushButton::clicked, bd, &connectPost::enterQueryButton);
-     connect(ui->buttonQuery, &connectPost::sendTableVie(),
-             bd,this->showTableVie());
+    connect(bd, &connectPost::sendTableVie,this, &MainWindow::showTableVie);
+
+    // connect(ui->buttonQuery, &connectPost::sendTableVie(),
+     //        bd,this->showTableVie());
 
 }
 

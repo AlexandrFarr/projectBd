@@ -38,13 +38,21 @@ void connectPost::showTable(QString nameTable)
 }
 
 
-void connectPost::sendTableVie(QSqlQueryModel *model)
-{
-    connect(this, &connectPost::sendTableVie, this,);
-}
 
 
 void connectPost::enterQueryButton()
 {
-    this->showTable("users1");
+    QSqlQuery *query = new QSqlQuery(db);
+
+   // QSqlQueryModel *model = new QSqlQueryModel();
+    QSqlQueryModel *newmodel = new QSqlQueryModel();
+
+    query->prepare("SELECT * FROM users1");
+    query->exec();
+    newmodel->setQuery(*query);
+
+    emit (this->sendTableVie(newmodel));
+
 }
+
+
