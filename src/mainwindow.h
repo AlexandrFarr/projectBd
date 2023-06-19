@@ -21,7 +21,7 @@ signals:
     void mySignaltoBd();
 
 public slots:
-    void showTableVie( QSqlQueryModel *model);
+    void showTableVie( QSqlQueryModel &arg);
 
 
 private:

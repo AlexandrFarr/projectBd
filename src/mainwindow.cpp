@@ -7,15 +7,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connectPost *bd = new connectPost();
-    QSqlQueryModel *model = new QSqlQueryModel();
+    MainWindow::setWindowTitle("connectedDb");
 
+    connectPost *bd = new connectPost();
 
     connect(ui->buttonQuery, &QPushButton::clicked, bd, &connectPost::enterQueryButton);
     connect(bd, &connectPost::sendTableVie,this, &MainWindow::showTableVie);
-
-    // connect(ui->buttonQuery, &connectPost::sendTableVie(),
-     //        bd,this->showTableVie());
 
 }
 
@@ -24,9 +21,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::showTableVie(QSqlQueryModel *model)
+void MainWindow::showTableVie(QSqlQueryModel &model)
 {
-    ui->tableView->setModel(model);
+     ui->tableView->setModel(std::move(&model));
 }
 
 
