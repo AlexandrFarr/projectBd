@@ -40,6 +40,8 @@ file(GLOB_RECURSE FORMS
     "${FORMS_DIR}/forms.qrc"
 )
 
+
+
 #=================== SETUP EXECTUABLE ====================#
 
 
@@ -64,11 +66,6 @@ add_subdirectory(
 
 
 #==========================================================
-
-
-
-
-
 
 
 # Add the target includes for MY_PROJECT

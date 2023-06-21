@@ -2,6 +2,7 @@
 //#include "../src/example.h"
 //#include "../src/example.h"
 #include "example.h"
+#include "connectpost.h"
 
 TEST(example, add_numbers) {
     double res;

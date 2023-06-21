@@ -22,6 +22,7 @@ signals:
 
 public slots:
     void showTableVie( QSqlQueryModel &arg);
+    void clearTable();
 
 
 private:

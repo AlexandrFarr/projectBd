@@ -14,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->buttonQuery, &QPushButton::clicked, bd, &connectPost::enterQueryButton);
     connect(bd, &connectPost::sendTableVie,this, &MainWindow::showTableVie);
 
+    connect(ui->ButtonClose, &QPushButton::clicked, bd, &connectPost::disconected);
+    connect(ui->ButtonClose, &QPushButton::clicked, this, &MainWindow::clearTable);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -23,9 +27,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::showTableVie(QSqlQueryModel &model)
 {
-     ui->tableView->setModel(std::move(&model));
+    ui->tableView->setModel(std::move(&model));
 }
 
+void MainWindow::clearTable()
+{
+   // if( ui->tableView->model()->rowCount() > 0)
+  //  {
+   //     ui->tableView->setModel(nullptr);
+   // }
+
+}
 
 
 

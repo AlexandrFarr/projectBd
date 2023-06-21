@@ -18,13 +18,13 @@ public:
 
 public slots:
     void enterQueryButton();
+    void disconected();
 
 signals:
     void sendTableVie(QSqlQueryModel &arg);
 
 private:
     QSqlDatabase db;
-
 
 };
 
