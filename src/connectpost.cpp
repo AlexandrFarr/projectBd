@@ -28,7 +28,6 @@ void connectPost::enterQueryButton()
 {
     //реализоать новое подключение к другой базе данных
 
-
     if(db.isOpen()){
         QSqlQuery *query = new QSqlQuery(db);
         QSqlQueryModel *model = new QSqlQueryModel();

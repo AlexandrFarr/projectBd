@@ -20,6 +20,7 @@ public slots:
     void enterQueryButton();
     void disconected();
 
+
 signals:
     void sendTableVie(QSqlQueryModel &arg);
 

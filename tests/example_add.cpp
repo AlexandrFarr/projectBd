@@ -1,15 +1,22 @@
 #include <gtest/gtest.h>
 //#include "../src/example.h"
 //#include "../src/example.h"
-#include "example.h"
+//#include "example.h"
 #include "connectpost.h"
+#include <QtSql>
+#include <QSqlDatabase>
+#include <QSqlTableModel>
+
+
 
 TEST(example, add_numbers) {
-    double res;
-    res = add_numbers(1.0, 2.0);
+
+    connectPost *bd = new connectPost();
+    bd->enterQueryButton();
+
 
 	EXPECT_EQ(7 * 6, 42);
-    EXPECT_EQ(res, 42);
+
 
 }
 

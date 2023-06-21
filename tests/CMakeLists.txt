@@ -6,7 +6,7 @@ set(TEST_EXECUTABLE your-test)  # (2)
 set(TEST_NAME test-name)
 set(UNIT_UNDER_TEST_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
 set(MAIN_SRC_DIR ../src)
-set (MAIN_SOURCE ${MAIN_SRC_DIR}/example.cpp )
+#set (MAIN_SOURCE ${MAIN_SRC_DIR}/example.cpp )
 
 
 #===============include Google Tests==========================#
@@ -29,7 +29,7 @@ find_package(Qt6Widgets REQUIRED)
 
 # если сделаем статическую библиотеку из src то убираем ${MAIN_SOURCE}
 add_executable(
-    your-test example_add.cpp  ${MAIN_SOURCE} ${MAIN_SRC_DIR}/connectpost.cpp
+    your-test example_add.cpp  ${MAIN_SRC_DIR}/connectpost.cpp
 )
 
 target_link_libraries(your-test
