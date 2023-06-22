@@ -15,10 +15,12 @@ class connectPost : public QObject
 
 public:
     explicit connectPost(QObject *parent = nullptr);
+    void creatConnect(QVector<QString> &dataConnectBd);
+    void disconected();
 
 public slots:
     void enterQueryButton();
-    void disconected();
+
 
 
 signals:
