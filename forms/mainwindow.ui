@@ -115,12 +115,15 @@
         <item>
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Password</string>
+           <string>TableName</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEdit_5">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="maximumSize">
            <size>
             <width>150</width>
@@ -129,6 +132,23 @@
           </property>
           <property name="maxLength">
            <number>99</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Password</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_6">
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>20</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -142,19 +162,6 @@
           </property>
           <property name="text">
            <string>Connect</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="ButtonClose">
-          <property name="maximumSize">
-           <size>
-            <width>150</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Disconect</string>
           </property>
          </widget>
         </item>

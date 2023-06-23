@@ -16,18 +16,16 @@ class connectPost : public QObject
 public:
     explicit connectPost(QObject *parent = nullptr);
     void creatConnect(QVector<QString> &dataConnectBd);
-    void disconected();
 
 public slots:
     void enterQueryButton();
-
-
 
 signals:
     void sendTableVie(QSqlQueryModel &arg);
 
 private:
     QSqlDatabase db;
+    QString table;
 
 };
 

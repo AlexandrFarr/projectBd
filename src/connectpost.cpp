@@ -7,28 +7,50 @@ connectPost::connectPost(QObject *parent)
 
 void connectPost::creatConnect(QVector<QString> &dataConnectBd)
 {
+    if(db.isOpen() && this->table != dataConnectBd[0]){
+        this->table = dataConnectBd[4];
+    }
 
-    if(!dataConnectBd.empty() && !db.isOpen()){
+    else{
+        if(db.isOpen() &&  db.hostName() != dataConnectBd[0]){
+            db.close();
 
-        //if(db.isOpen()){
-          //  db.close();
-         //   QMessageBox::warning(0, "База данных уже подключена"," Отключение старой базы данных и подключееие новой");
-       // }
+            db.setHostName(dataConnectBd[1]);
+            db.setDatabaseName(dataConnectBd[2]);
+            db.setUserName(dataConnectBd[3]);
+            db.setPassword(dataConnectBd[5]);
 
-        db = QSqlDatabase::addDatabase(dataConnectBd[0]);
+            this->table = dataConnectBd[4];
 
-        db.setHostName(dataConnectBd[1]);
-        db.setDatabaseName(dataConnectBd[2]);
-        db.setUserName(dataConnectBd[3]);
-        db.setPassword(dataConnectBd[4]);
-
-        if (!db.open()){
-            QMessageBox::warning(0, "Ошибка подключения",db.lastError().text());
-        }else{
-             QMessageBox::information(0,"успешно ","соединение установленно");
+            if (!db.open()){
+                QMessageBox::warning(0, "Ошибка подключения",db.lastError().text());
+            }else{
+                 qDebug()<< "успешно соединение установленно";
+            }
         }
+
+    else{
+        if(!dataConnectBd.empty() && db.hostName()!= dataConnectBd[0]){
+
+             db = QSqlDatabase::addDatabase(dataConnectBd[0]);
+
+             db.setHostName(dataConnectBd[1]);
+             db.setDatabaseName(dataConnectBd[2]);
+             db.setUserName(dataConnectBd[3]);
+             db.setPassword(dataConnectBd[5]);
+
+
+             this->table = dataConnectBd[4];
+            }
+        }
+    }
+
+
+
+    if (!db.open()){
+        QMessageBox::warning(0, "Ошибка подключения",db.lastError().text());
     }else{
-         QMessageBox::warning(0, "некоррентые данные"," введите данные для подклчюения к базе данных");
+         QMessageBox::information(0,"успешно ","соединение установленно");
     }
 }
 
@@ -41,24 +63,15 @@ void connectPost::enterQueryButton()
         QSqlQuery *query = new QSqlQuery(db);
         QSqlQueryModel *model = new QSqlQueryModel();
 
-        query->prepare("SELECT * FROM users1");
+        QString issue = "SELECT * FROM "+this->table;
+        query->prepare(issue);
         query->exec();
         model->setQuery(std::move(*query));
 
         emit (this->sendTableVie(*model));
     }
-
 }
 
-void connectPost::disconected()
-{
-    if(db.isOpen()){
-        db.close();
-    }else{
-        QMessageBox::warning(0, "Ошибка отключения","нет активных подключений");
-    }
 
-
-}
 
 
